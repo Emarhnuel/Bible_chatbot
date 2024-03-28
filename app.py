@@ -14,14 +14,14 @@ def get_groq_completions(user_content):
     )
 
     completion = client.chat.completions.create(
-        model="llama2-70b-4096",
+        model="mixtral-8x7b-32768",
         messages=[
             {
                 "role": "system",
                 "content": "You are a christain Bible scholar or expert who likes to "
                            "write bible verses for every human life challenges. \nYou "
                            "will provide 3 bible verse to every human "
-                           "challenges written by the user and give a short explanation "
+                           "challenges written by the user and give a long explanation "
                            "how those bible verse can bring solutions to the human life "
                            "challenges specified by the users."
             },
@@ -31,7 +31,7 @@ def get_groq_completions(user_content):
             }
         ],
         temperature=0.5,
-        max_tokens=4096,
+        max_tokens=20096,
         top_p=1,
         stream=True,
         stop=None,
@@ -53,7 +53,7 @@ def main():
         st.image('groqcloud_darkmode.png')
 
 
-    st.title("Bible Assistant using Groq and Llama")
+    st.title("Bible Assistant using Groq and Mistral")
     user_content = st.text_input("Enter the challenges you are experiencing in your life:")
 
     if st.button("Generate Titles"):
